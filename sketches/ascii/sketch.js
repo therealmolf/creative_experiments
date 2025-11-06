@@ -19,17 +19,17 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(240);
   // make font size smaller
   // image(img, 0, 0);
-  textSize(6);
+  textSize(8.5);
 
   for (let i = 0; i < img.width; i++) {
     for (let j = 0; j < img.height; j++) {
       let pixelVal = img.get(i, j);
       let greenVal = green(pixelVal);
       print(greenVal);
-      let asciiIndex = floor(map(greenVal, 0, 255, 0, asciiChar.length));
+      let asciiIndex = floor(map(greenVal, 120, 255, 0, asciiChar.length));
 
       let x = i * size;
       let y = j * size;
@@ -37,7 +37,7 @@ function draw() {
       // Fille color based on lerp between light green and dark green
       let c1 = color(17, 59, 6); // Pakistan Green
       let c2 = color(221, 190, 168); // Desert Sand
-      let interColor = lerpColor(c1, c2, map(greenVal, 0, 255, 0, 1));
+      let interColor = lerpColor(c1, c2, map(greenVal, 100, 255, 0, 1));
       fill(interColor);
 
       let asciiVal = asciiChar.charAt(asciiIndex);
