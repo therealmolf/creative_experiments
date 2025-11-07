@@ -14,6 +14,7 @@ function preload() {
 
 function setup() {
   createCanvas(800, 800);
+  frameRate(23);
 }
 
 function draw() {
@@ -109,6 +110,7 @@ function draw() {
       pop(); // restore style settings
     }
   }
+  save;
 }
 
 function applySepia(img) {
@@ -134,4 +136,11 @@ function glow(glowColor, blurriness) {
   // // Then you have exposed all the HTML canvas methods and properties, like shadowBlur and shadowColor
   drawingContext.shadowColor = glowColor;
   drawingContext.shadowBlur = blurriness;
+}
+
+// Save a 5-second gif when the user presses the 's' key.
+function keyPressed() {
+  if (key === "s") {
+    saveGif("waves.gif", 5);
+  }
 }
