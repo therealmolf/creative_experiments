@@ -1,8 +1,9 @@
 let images = [];
 const imagePaths = [
-  "../../assets/images/flowy_amber_glass_textures_mixed.png",
   "../../assets/images/Maps.png",
   "../../assets/images/Zhongshan.png",
+  "../../assets/images/editmake_the_growth_start_from_t.png",
+  "../../assets/images/flowy_and_liquidlooking_amber_gl.png",
 ];
 
 function preload() {
@@ -22,8 +23,8 @@ function draw() {
   strokeWeight(1.5);
 
   // Set the noise level and scale.
-  let noiseLevel = 600;
-  let noiseScale = 0.2; // 0.0035
+  let noiseLevel = 550;
+  let noiseScale = 0.11; // 0.0035, 0.2
 
   // draw moving, point-based horizontal lines on the canvas
   for (let x = 0; x <= width; x += 2) {
@@ -62,7 +63,7 @@ function draw() {
 
     // Draw the third line
     stroke(33, 39, 56); // Raisin black
-    for (let i = 0; i < 200; i += 5) {
+    for (let i = 0; i < 250; i += 5) {
       point(x, y4 + i);
     }
   }
@@ -85,7 +86,7 @@ function draw() {
     } else if (r < 0.4) {
       applySepia(imgCut);
     } else if (r < 0.6) {
-      imgCut.filter(POSTERIZE, int(random(2, 6)));
+      imgCut.filter(POSTERIZE, int(random(2, 3)));
     }
 
     let dx = random(0, width);
@@ -93,19 +94,20 @@ function draw() {
     let dWidth = sWidth * random(0.5, 2);
     let dHeight = sHeight * random(0.5, 2);
 
-    tint(255, random(75, 200)); // Apply random opacity (20-60%)
+    tint(255, random(75, 255)); // Apply random opacity (20-60%)
     image(imgCut, dx, dy, dWidth, dHeight);
     noTint(); // Reset tint for subsequent drawings
 
     // Randomly add a red border
-    // if (random(1) < 0.3) {
-    //   push(); // save current style settings
-    //   stroke(255, 0, 0);
-    //   strokeWeight(6); // thick border
-    //   noFill();
-    //   rect(dx, dy, dWidth, dHeight);
-    //   pop(); // restore style settings
-    // }
+    if (random(1) < 0.3) {
+      push(); // save current style settings
+      // stroke(255, 0, 0);
+      stroke(127, 42, 43); // Garnet
+      strokeWeight(6); // thick border
+      noFill();
+      rect(dx, dy, dWidth, dHeight);
+      pop(); // restore style settings
+    }
   }
 }
 
